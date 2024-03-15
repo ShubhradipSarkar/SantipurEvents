@@ -49,7 +49,7 @@ function ServerDay(props) {
       style={{color:'black', fontSize:'16px'}}
       badgeContent={isSelected ? <BlockIcon sx={{ color: pink[500] }} fontSize="small"/> : undefined}
     >
-      <PickersDay {...other} style={{fontSize:'16px', color:'black'}} outsideCurrentMonth={outsideCurrentMonth} day={day} />
+      <PickersDay {...other} style={{fontSize:'16px', color:'white'}} outsideCurrentMonth={outsideCurrentMonth} day={day} />
     </Badge>
   );
 }
@@ -102,7 +102,7 @@ export default function DateCalendarServerRequest() {
         defaultValue={initialValue}
         loading={isLoading}
         onMonthChange={handleMonthChange}
-        renderLoading={() => <DayCalendarSkeleton style={{color:'black'}}/>}
+        renderLoading={() => <DayCalendarSkeleton style={{color:'white'}}/>}
         slots={{
           day: ServerDay,
         }}

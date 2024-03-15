@@ -47,7 +47,7 @@ function ServerDay(props) {
       key={props.day.toString()}
       overlap="circular"
       style={{color:'black', fontSize:'16px'}}
-      badgeContent={isSelected ? <BlockIcon sx={{ color: pink[500] }} fontSize="small"/> : undefined}
+      badgeContent={isSelected ? <BlockIcon sx={{ color: '#040d87' }} fontSize="small"/> : undefined}
     >
       <PickersDay {...other} style={{fontSize:'16px', color:'white'}} outsideCurrentMonth={outsideCurrentMonth} day={day} />
     </Badge>
@@ -111,7 +111,7 @@ export default function DateCalendarServerRequest() {
             highlightedDays,
           },
         }}
-        style={{backgroundColor:'gray'}}
+        style={{backgroundColor:pink[700], borderRadius:'25px'}}
       />
     </LocalizationProvider>
   );

@@ -10,6 +10,8 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import BasicRating from "@/components/Rating"
 import StarsIcon from '@mui/icons-material/Stars';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Link from 'next/link';
 function page() {
     const business="Book";
   return (
@@ -17,6 +19,8 @@ function page() {
         <ResponsiveAppBar />
         
         <div style={{margin: '5%'}}>
+            <Link href="/"><ArrowBackIcon /></Link>
+            
         <div style={{marginTop: '20px',}}>
         
         <h2><AccountBalanceIcon style={{ color: pink[500]}}/> Geeta Palace</h2>

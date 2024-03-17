@@ -22,8 +22,8 @@ function fakeFetch(date, { signal }) {
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
       const daysInMonth = date.daysInMonth();
-      const daysToHighlight = [1, 2, 3].map(() => getRandomNumber(1, daysInMonth));
-
+      const daysToHighlight = [5, 25, 15];
+      console.log("days =", daysToHighlight);
       resolve({ daysToHighlight });
     }, 500);
 
@@ -57,7 +57,7 @@ function ServerDay(props) {
 export default function DateCalendarServerRequest() {
   const requestAbortController = React.useRef(null);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [highlightedDays, setHighlightedDays] = React.useState([1, 2, 15]);
+  const [highlightedDays, setHighlightedDays] = React.useState([1,2,3]);
 
   const fetchHighlightedDays = (date) => {
     const controller = new AbortController();
@@ -84,35 +84,36 @@ export default function DateCalendarServerRequest() {
     return () => requestAbortController.current?.abort();
   }, []);
 
-  const handleMonthChange = (date) => {
-    if (requestAbortController.current) {
-      // make sure that you are aborting useless requests
-      // because it is possible to switch between months pretty quickly
-      requestAbortController.current.abort();
-    }
+    const handleMonthChange = (date) => {
+        console.log("date = ", date.$M);
+        if (requestAbortController.current) {
+        // make sure that you are aborting useless requests
+        // because it is possible to switch between months pretty quickly
+        requestAbortController.current.abort();
+        }
 
-    setIsLoading(true);
-    setHighlightedDays([]);
-    fetchHighlightedDays(date);
-  };
+        setIsLoading(true);
+        setHighlightedDays([1,2,3]);
+        fetchHighlightedDays(date);
+    };
 
-  return (
-    <LocalizationProvider style={{color:'black'}} dateAdapter={AdapterDayjs}>
-      <DateCalendar
-        defaultValue={initialValue}
-        loading={isLoading}
-        onMonthChange={handleMonthChange}
-        renderLoading={() => <DayCalendarSkeleton style={{color:'white'}}/>}
-        slots={{
-          day: ServerDay,
-        }}
-        slotProps={{
-          day: {
-            highlightedDays,
-          },
-        }}
-        style={{backgroundColor:pink[700], borderRadius:'25px'}}
-      />
-    </LocalizationProvider>
-  );
+    return (
+        <LocalizationProvider style={{color:'black'}} dateAdapter={AdapterDayjs}>
+        <DateCalendar
+            defaultValue={initialValue}
+            loading={isLoading}
+            onMonthChange={handleMonthChange}
+            renderLoading={() => <DayCalendarSkeleton style={{color:'white'}}/>}
+            slots={{
+            day: ServerDay,
+            }}
+            slotProps={{
+            day: {
+                highlightedDays,
+            },
+            }}
+            style={{backgroundColor:pink[700], borderRadius:'25px'}}
+        />
+        </LocalizationProvider>
+    );
 }

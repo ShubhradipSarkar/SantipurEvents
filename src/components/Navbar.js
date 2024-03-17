@@ -14,6 +14,9 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useRouter } from 'next/navigation';
+import { pink } from '@mui/material/colors';
+
+
 const pages = ['Home', 'Owner', 'Developer'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -45,7 +48,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" style={{backgroundColor:"#02024a" }}>
+    <AppBar position="static" style={{backgroundColor:pink[700] }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
